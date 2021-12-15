@@ -1,59 +1,171 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>CLI-Basics</title>
     <meta charset="utf-8">
+    <link rel-"stylesheet" type="text/css" href-"./css/global.css"/>
     <style>
-      body { font-family: 'helvetica'; }
+      body { font-family: 'Helvetica Neue'; size: '12' }
       h1, h2, h3 {
         font-family: 'helvetica';
         font-weight: normal;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code, .remark-inline-code { font-family: 'menlo'; }
     </style>
   </head>
   <body>
     <textarea id="source">
 
-class: center
+class: center, middle
+
+<!--
+  Links and resources
+-->
+[1]: https://c.tenor.com/rUa8MTSuXFEAAAAM/who-cares.gif "Who cares"
+[2]: https://zsh.sourceforge.io/
+
+
+![who cares][1]
 
 # CLI - _why do I care_? 
-![who cares][1]
-[1]: https://c.tenor.com/rUa8MTSuXFEAAAAM/who-cares.gif "Who cares"
+ by Harold Vilander
 
----
+???
+I found this topic in the backlog, and I love the CLI.
 
-# Road map 
-
-1. Introduction 
-2. Why you might care
-3. Getting around using the terminal
-4. Process management
-5. git examples
-
+So I thought it was a good one for me to pick up.
+I also recognize that not every one needs, wants or cares about CLI skils
 ---
 
 # Hello CLI
 some things to get out of the way:
 1. Not exhaustive
 2. Correct me!
-3. Target Audience: macOS, linux, unix, and windows (sortof)
+3. Target Audience: Bash / zsh
+
+???
+A while back apple
+most commands are the same
+I dont think I am messing up bash users
 
 ---
-# Second Introduction 
-- getting around
-- some short cuts
-- directories and files
-- git 
-- text editing
+
+# What? 
+
+- Why you might care
+- Getting around using the terminal
+- Process management
+- git examples
+- vim
+
+???
+- WHY?
+1. make an argument for the CLI
+  a. for me, better understanding 
+  b. 
+- Make an argument for learning more CLI
+- by More, I expect that everyone knows a bit to a lot
+- I expect a lot of difference in familiarity so
+ for give me covering the basics
+
+
 ---
-# Getting Around
-- pwd
-- cd
-- ls
+# CL-WHY
+1. build up muscle memory
+2. you can stick to the keyboard
+3. _FOR ME_ it builds understanding
+4. Automation
+
+---
+
+# Using the Shell
+- what dir is this? 
+- moving around 
+- what is in this dir? 
 -- options
 
+- getting help
+- completion
+- history 
+- list directories
+- options
+- common things, . .. -
+- sudo
+- sudo last
+
+???
+pwd
+cd
+cd ..
+cd ../..
+cd ~/home dirtory stuff
+cd -
+ls
+ls -lah
+
+
+
 ---
+# `ctrl`-ing processes
+
+`ctrl c` : SIGINT / kill
+`ctrl z` : pause the fg -> fg and bg
+`ctrl l` : or clear, no you can just type clear
+
+???
+start a ping
+ctrl c
+
+start a npm server
+ctrl z
+bg 
+jobs
+fg
+kill
+
+---
+
+class: center, middle
+
+# git things 
+```
+A -> B -> C -> D
+```
+
+`git log`
+
+???
+cd into a project
+git log
+talk about what you are seeing
+
+Example there is some bad behavior in 
+2 commits ago
+
+we can check out commits from their hash
+we can diff commits comparing two commits refernce
+by branch or hash
+
+
+
+
+---
+
+vim 
+
+
+
+
+
+# Getting Around
+
+<!-- local video example
+  <video controls height="400px"> 
+  <source src="./assets/test.mp4" type="video/mp4">
+</video>
+-->
+---
+
 # CLI Everything
 - This presentation
 
