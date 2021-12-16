@@ -3,15 +3,7 @@
   <head>
     <title>CLI-Basics</title>
     <meta charset="utf-8">
-    <link rel-"stylesheet" type="text/css" href-"./css/global.css"/>
-    <style>
-      body { font-family: 'Helvetica Neue'; size: '12' }
-      h1, h2, h3 {
-        font-family: 'helvetica';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'menlo'; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
   <body>
     <textarea id="source">
@@ -93,27 +85,31 @@ I dont think I am messing up bash users
 
 ???
 ```bash
+BE IN ~/dec16_talk
+
 pwd
-cd path 
+ls
+cd react-express-example 
 cd ..
-// PICK TWO DIRECTOYS TO PLAY WITH
-dev/examples/animated-css
-dev/talks/cli-basics
 
-
-Tab completion
-~ and your home
+cd ~/dev/talks/cli-basics 
 cd -
+
 ls
 man 
-ls -l
-ls -lah
+moving around a bit
+
 sudo
+
+UP ARROW
+
+sudo !!
+
 ```
 
 ---
 
-# `ctrl`-ing processes
+# `ctrl` - some short cuts
 
 `ctrl c` : SIGINT / kill
 
@@ -136,6 +132,8 @@ kill
 
 ???
 hypothentical:
+cd ~/dev/talks/cli-basics
+
 I have the project I am working on 
 and I being asked to quickly find and
 fix a bug that just happend. 
@@ -164,7 +162,6 @@ oh wow that diff is too big
 what files chnaged
 git diff head~1 --name-only
 
-
 okay I am pretty sure sure file A is my 
 problem lets check it out from main into dev
 
@@ -189,16 +186,11 @@ i my commit messsage
 :wq 
 
 
-<!-- local video example
-  <video controls height="400px"> 
-  <source src="./assets/test.mp4" type="video/mp4">
-</video>
--->
---- 
+---
 
 class: center, middle
 
-# BONUS !!!
+# BONUS 
 
 ---
 # CLI Everything
