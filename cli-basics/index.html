@@ -79,33 +79,30 @@ I dont think I am messing up bash users
 ---
 
 # Using the Shell
-- what dir is this? 
+- what directory is this? 
 - moving around 
 - what is in this dir? 
--- options
-
+- what size are these things
 - getting help
-- completion
-- history 
-- list directories
-- options
-- common things, . .. -
-- sudo
-- sudo last
+- being super
+- do it again
+- do it again but super
 
 ???
 pwd
-cd
+cd path 
 cd ..
-cd ../..
-cd ~/home dirtory stuff
+Tab completion
+~ and your home
 cd -
 ls
+man 
+ls -l
 ls -lah
-
-
+sudo
 
 ---
+
 # `ctrl`-ing processes
 
 `ctrl c` : SIGINT / kill
@@ -125,47 +122,75 @@ kill
 
 ---
 
-class: center, middle
-
 # git things 
-```
-A -> B -> C -> D
-```
-
-`git log`
 
 ???
-cd into a project
+hypothentical:
+I have the project I am working on 
+and I being asked to quickly find and
+fix a bug that just happend. 
+
+First I want to make sure I have the
+most recent version of develop branch
+
+git checkout develop
+git fetch --all // unnessiary but it makes me feel better
+git pull
+
+what if I dont believe it thou?
 git log
-talk about what you are seeing
+here is the SHA hash of the commit
+it matches what bit bucket reports too
 
-Example there is some bad behavior in 
-2 commits ago
+This is a really active repo
+many things have changed since the last deployment
+and FOR THE HYPOTHETICAL lets say its really hard
+to narrow down what part of the app is buggy
 
-we can check out commits from their hash
-we can diff commits comparing two commits refernce
-by branch or hash
+lets look back one commit
+git diff head~1
 
-
-
-
----
-
-vim 
-
+oh wow that diff is too big
+what files chnaged
+git diff head~1 --name-only
 
 
+okay I am pretty sure sure file A is my 
+problem lets check it out from main into dev
 
+git checkout main path/to/fileA.txt
 
-# Getting Around
+Okay that is mostly fixed but I need to 
+commit that file into develop
+
+first letme check what things are 
+git status
+
+cool its just that file and I trust 
+that my changes on it are good
+
+git add . && git commit
+
+WHICH BRINGS US TO VIM
+lets yank the branch name 
+yw
+put that 
+i my commit messsage
+:wq 
+
 
 <!-- local video example
   <video controls height="400px"> 
   <source src="./assets/test.mp4" type="video/mp4">
 </video>
 -->
----
+--- 
 
+class: center, middle
+
+# BONUS !!!
+
+---
 # CLI Everything
 - This presentation
 
