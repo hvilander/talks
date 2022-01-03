@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CLI-Basics</title>
+    <title>Timezones</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
@@ -10,35 +10,72 @@
 
 class: center, middle
 
-<!--
-  Link examples 
--->
-[1]: https://www.youtube.com/watch?v=-5wpm-gesOY "Computerphile timezones"
-[2]: https://en.wikipedia.org/wiki/ISO_8601 "wikipedia ISO-8601"
+<!-- Link -->
+[1]: https://www.youtube.com/watch?v=-5wpm-gesOY 
+[2]: https://momentjs.com/docs/#/parsing/ "Parsing"
+[3]: https://www.w3.org/TR/timezone/ "Working with Timezones"
 
+<img src="./assets/Computerphile.png" alt="Computerphile" width="666px"/>
 
-# Timezones 
- by Harold Vilander
+# Time Zones
+by Harold Vilander
 
-???
+---
+class: center, middle
+
+# Time ~~Zones~~ Offsets
+<img src="./assets/tz-map.png" alt="timezone offest map" width="666px"/>
 
 ---
 
-Vocabulary
-timezone
-time offset
-daylight savings time
-leap seconds
-ISO-8601
+# Vocabulary
+ISO-8601: 
+timezone: 
+time offset: 
+daylight savings time:
+leap seconds: 
+
+---
+
+# SQ Specific
+
+---
+
+DB timezone setting
+
+---
+
+# SQFormDatePicker
+- is Moment&trade; ... Moment is deprecated.
+- `.isUTC()` -> false 
+- `.utcOffset()` -> -300
+
+See [Parsing][2]
+
+IF the BE parses this as a UTC -5 / -6 time it 
+could save wrong
+
+The FE will try to show this in local time.
+
+-- UTC IN THE MIDDLE SO SHOULD ALWAYS BE THE SAME DATE
 
 
 ---
-some of our problems
-db time
+
+The type of data we operate on (dates vs date times)
+
+---  
+
 browser settings
+
+---  
+
 conversion breaking things
 
 ---
+
+# Tools
+dev tools - 
 libraries that can help
 dateFns - needs an extra lib I think
 moment - don't just don't
