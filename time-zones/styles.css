@@ -2,6 +2,10 @@ body {
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+a {
+  color: rgb(173, 186, 199);
+}
+
 h1, h2, h3 {
         font-family: 'helvetica';
         font-weight: normal;
