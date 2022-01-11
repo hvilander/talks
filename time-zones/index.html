@@ -17,28 +17,27 @@ class: center, middle
 [4]: https://www.w3.org/International/articles/definitions-time/
 [5]: https://en.wikipedia.org/wiki/Newfoundland_Time_Zone
 [6]: https://en.wikipedia.org/wiki/Tz_database
+[7]: https://www.w3.org/International/wiki/FloatingTime
+
 
 <img src="./assets/Computerphile.png" alt="Computerphile" width="666px"/>
 
 # Time Zones
 by Harold Vilander
 
-**TODO make example in SQFORM branch: time-zone-example**
-
 ???
-Hello!!! Topic today - another date time topic - timezones and some
+- Hello!!! Topic today - another date time topic - timezones and some
 related things
 
-. Computerphile: Youtube channel, this video is a warning
-. we are not out in the wilderness and have some tools that we can use
+- Computerphile - Youtube - A Warning
 
-.1. Some more detailed Vocab
+1. Some more detailed Vocab
+2. Discussion: SQ's solutions - took too long
+3. SQForm Date pickers
+4. Touch on some tools
+5. Moment vs date-fns
 
-.2. Discussion and examples with SQForm Components 
-
-.3. Some timezone libraries and usage to consider
-
-But first a bit of a disclaimer....
+- Disclaimer....
 
 ---
 # Disclaimer
@@ -57,9 +56,9 @@ class: center
 
 
 ???
-.- Observed Time:  also called local time the sun is directly over head
-.- Incremental Time: computationally easier. UTC is an example.
-.- An integer value that increase monotonically from a specific time or
+- Observed Time:  also called local time the sun is directly over head
+- Incremental Time: computationally easier. UTC is an example.
+- An integer value that increase monotonically from a specific time or
   Epoch.
 
 ---
@@ -79,24 +78,27 @@ class: center, middle
 # Zones and Offsets
 <img src="./assets/tz-map.png" alt="timezone offest map" width="666px"/>
 
+???
+Map further from GMT Greenwich + or - time
+- Need once humans started traveling greater distances at quicker speeds Railroads
+
 ---
 
 # Time Zone
 1. Geographic Location
-2. Railroads
-3. UTC Offset aka Time Zone *Offset*
-4. DST Observation and Adoption Dates
-5. Identifiers: America/New_York
+2. UTC Offset aka Time Zone *Offset*
+3. DST Observation and Adoption Dates
+4. Identifiers: America/New_York
 
 
 ???
-.- Geographic Location
+TIME ZONE IS NOT GMT+5
+- Geographic Location
   Fun Fact: at the equator traveling 17 miles will change observed local time by 1min.
   The "one minute" distance is smaller the further you are from the equator
-.- This fact created issues once humans started traveling greater distances - Railroads
-.- The offset is given in +/- time from UTC
-.- Adoption Japan gave up DST in 1951
-.- Names of zones: ICANN backs tz database [6]
+- The offset is given in +/- time from UTC
+- Adoption Japan gave up DST in 1951
+- Names of zones: ICANN backs tz database [6]
 
 ---
 # NOTE:
@@ -104,22 +106,22 @@ class: center, middle
 DST.
 
 - Offsets are not always an even hour:
-[Newfoundland Time Zone][5] is UTC-03:30
-during their standard time and UTC-02:30 on DST.
+[Newfoundland Time Zone][5] is GMT-03:30
+during their standard time and GMT-02:30 on DST.
 
 ---
 
 # Floating Time:
 - A date or time not dependent on timezone
 - Examples: Valentines Day, a date of birth, maybe plan effective days
-- w3c recommends never attaching time offset to a floating time.
+- W3C recommends never attaching time offset to a floating time.
 
 ???
 Each of these V day, dob are based on calendar dates that really
 have nothing to do with a time zone offset and make less sense 
 when you try to force them into that
 
-w3c - this article feels written for those writing the date time
+W3C - this article feels written for those writing the date time
 libraries, so maybe this is bad advice for us
 
 Area of uncertainty for me.
@@ -157,7 +159,9 @@ class: center, middle
 ---
 ### He continues:
 > Date-only stuff, e.g. birthdate or the screenshot above with effective date, is a little trickier. There are two solutions in my mind:
+
 > Decide on a common midnight to use and use it everywhere. In other words, when we’re in the client, we could do something like moment.tz('2020-05-26', 'YYYY-MM-DD', 'America/Chicago'); to match our application server/database server. Then in the client, we would know that for date-only values, we need to display the value in the central timezone, i.e. moment(datetimeStringFromTheServer).tz('America/Chicago');.
+
 > Send a date string and let the server do the work. We could make the data contract for date fields be that the client sends a date string and the server decides how to store it. We would also need to send the date string back from the server so that it’s the same going in and out.
 ---
 ### and concludes with:
@@ -170,53 +174,47 @@ And the team landed on saving everything as a moment in time.
 For floating times they decided to use midnight CST/CDT. 
 
 Which aligns with some of the thoughts in this article
-https://www.w3.org/International/wiki/FloatingTime
-
----
-
-# Is this fine...
-We probably should make sure that when we save a date (floating time date) 
-That it should be midnight central time. 
-
-My hang-up was that I was thinking about Bret's other solution.
 
 ---
 class: center, middle
+# But why though?
+<img src="./assets/why.jpeg" alt="wait why" width="666px"/>
+https://www.w3.org/International/wiki/FloatingTime
+
+???
+A separate W3C article specific to floating time lays out the issue
+
+as soon as we put a floating time into a JS Date we are forcing it into
+incremental time
+
+"The problem here is that many of the Date methods in JavaScript are sensitive to the local system's time zone and they try to present the value using local time zone rules."
+
+"One way to work around this it to always use UTC (there are methods in JavaScript, for example, that allow one to work strictly in UTC) for floating time values."
+
+---
+
+class: center, middle
 
 # SQ DatePicker 
+???
 - Floating Date
 - Date Time
-
----
-# Dev tools
-Changing Time zones
-
----
 
 CHANGE TIME ZONES
 - Floating Date
 - Date Time
 
-PICK A Date off DST
-
 ---
-
 # SQFormDatePicker
 - is Moment&trade; ... Moment is deprecated.
 - `.isUTC()` -> false 
 - `.utcOffset()` -> -300
 
-
----
-
-# Moment is Deprecated 
-
----
-# Long live date-fns
-
 ---
 class: center, middle
+# datefns
 
+---
 # List time zones
 ```
 const { listTimeZones } = require('timezone-support')
@@ -224,7 +222,6 @@ const timeZones = listTimeZones()
 ```
 
 ---
-class: center, middle
 # Parse a date from a string in a specific time zone
 
 ```
@@ -245,8 +242,6 @@ const storedDate = parseFromTimeZone(enteredTime, customFormat, { timeZone })
 ---
 # More examples
 https://github.com/prantlf/date-fns-timezone/blob/master/docs/usage.md#usage-scenarios
-
----
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
