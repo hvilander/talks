@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CLI-Basics</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+<!--
+  Link examples 
+  ![who cares][1]
+[1]: https://c.tenor.com/rUa8MTSuXFEAAAAM/who-cares.gif "Who cares"
+[2]: https://zsh.sourceforge.io/
+[3]: https://git-scm.com/images/logos/downloads/Git-Logo-White.png
+-->
+
+[1] https://blog.logrocket.com/why-you-should-use-package-lock-json/
+
+
+
+# NPM Cannot be trusted with it is lock 
+ by Harold Vilander
+
+???
+Part 1: The issue
+- Working on testing out the TS branch of SQForm
+- The issue
+
+Part 2: trouble shooting
+- some trouble shooting that might be useful
+- css out of order
+- css duplicated!!! 
+
+Part 3: solution hunting
+- local consumption
+- I no longer trust NPM with its lock
+- peer dependencies?
+
+
+---
+
+
+
+tools 
+
+- cli: you know I like this one
+- grep ftw
+`grep version node-modules/my-module/package.json`
+`npm list mymodule`
+`npm pack`
+`npm run build`
+
+
+https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencies
+
+peer vs dependencies
+
+https://docs.npmjs.com/cli/v7/configuring-npm/package-json#peerdependencies
+
+
+
+Scratch notes for content:
+
+
+I have been having some fun doing some version updates, trying to consume typescript branch of 
+sqforms inside of miav. 
+
+
+I had a fun error to figure out. 
+
+I have found local consumption of our libs very useful
+
+npm tools:
+- list
+- peer dependencies
+- doing update installs: nuke the lock 
+- maybe a better way: recomended useage
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
