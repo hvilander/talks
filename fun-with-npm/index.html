@@ -10,22 +10,66 @@
 
 class: center, middle
 
-<!--
-  Link examples 
-  ![who cares][1]
-[1]: https://c.tenor.com/rUa8MTSuXFEAAAAM/who-cares.gif "Who cares"
-[2]: https://zsh.sourceforge.io/
-[3]: https://git-scm.com/images/logos/downloads/Git-Logo-White.png
--->
-
-[1] https://blog.logrocket.com/why-you-should-use-package-lock-json/
 
 
+# NPM 
 
-# NPM Cannot be trusted with it is lock 
- by Harold Vilander
+some review and an interesting problem
+
+by Harold Vilander
 
 ???
+<!-- Link examples 
+  ![who cares][1]
+-->
+[1]: https://blog.logrocket.com/why-you-should-use-package-lock-json
+[2]: https://docs.npmjs.com/cli/v7/configuring-npm/package-json#peerdependencies
+[3]: https://semver.org
+[4]: https://docs.npmjs.com/cli/v8/commands/npm-install
+
+---
+
+# RoadMap
+
+I: Some Review - install commands
+
+II: More Review - some differences in dependency classifications 
+
+III: an interesting problem I ran into
+
+IV: package-lock
+
+???
+I: I will cover some basics with some details that I had lost to time
+  - local package testing: docker and non docker
+II: Some definitions and best practices
+III: An issue I ran across 
+IV: package-lock and how not to use it
+
+---
+
+Part 1: Some NPM install commmand review
+
+- `npm install` with no arguments:
+  - Installs whatever you have in package.json into the node_modules directory.
+  - will not update package-lock.json
+- `npm install <pkg name>`:
+  - by default this is like a `--save-prod` or `-P` so... 
+  - it will update your package.json
+  - it will also update your package-lock.json
+- `npm install <name>@<version>`
+  - installs your the named package with the version provided (there are several ways
+  to specify version, check the docs)
+- `npm install <name> --save-dev` or `npm install <name> -D`
+    - puts an entry in devdependencies 
+    - update package-lock.json
+- `npm ci` continuous integrations mode, installs what you have in package.json
+
+
+
+
+---
+
 Part 1: The issue
 - Working on testing out the TS branch of SQForm
 - The issue
@@ -39,7 +83,6 @@ Part 3: solution hunting
 - local consumption
 - I no longer trust NPM with its lock
 - peer dependencies?
-
 
 ---
 
@@ -57,18 +100,34 @@ tools
 
 https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencies
 
-peer vs dependencies
+dependency vs peer vs dev dependencies
 
-https://docs.npmjs.com/cli/v7/configuring-npm/package-json#peerdependencies
+- dependencies: packages required by your application in production
+- dev: packages only needed for local development
+- peer: only used for packages that are released on npm. 
+  a) you expect your consumers to also ahve that package a dependency
+  b) you need a specific verions of that package
+  and
+  c) your npm package would break when the importing project has a dependency
+  for another version
 
 
+  npm ci
 
-Scratch notes for content:
+---
+
+  semver:  Semantic Versioning 2.0.0
+  1. MAJOR version when you make incompatible API changes,
+  2. MINOR version when you add functionality in a backwards compatible manner, and
+  3. PATCH version when you make backwards compatible bug fixes.
+Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
 
+---
+Holder
+??? intro text 
 I have been having some fun doing some version updates, trying to consume typescript branch of 
 sqforms inside of miav. 
-
 
 I had a fun error to figure out. 
 
@@ -81,8 +140,31 @@ npm tools:
 - maybe a better way: recomended useage
 
 
+`npm install` no arguments:
+- install the dependencies to the local node_moduels folder.
+- looks to the dependencies listed in package.json
+
+`-g` flag: global
+installs the current package context (ie the current working dir) as
+a global package
+
+`global package`  
 
 
+
+ooh interesting
+npm install <alias>@npm<name> - installs a package under a cumtom alias
+npm install [<@scope/]<name>@<version>
+
+global
+
+Default: false
+Type: Boolean
+Operates in "global" mode, so that packages are installed into the prefix folder instead of the current working directory. See folders for more on the differences in behavior.
+
+packages are installed into the {prefix}/lib/node_modules folder, instead of the current working directory.
+bin files are linked to {prefix}/bin
+man pages are linked to {prefix}/share/man
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
