@@ -98,9 +98,7 @@ by Harold Vilander
 - CI is continuous integration mode. 
  - meant for automated environments
  - "OR any situation where you want to make sure you have a clean install of deps"
- - if package.json and package-lock.json don't agree it will not update package-lock
- - KEY DIFFERENCE ^^^ I expected to work when manually updating package.json
- - will remove node modules if they are present.
+ - will remove node_modules if they are present.
 
 ---
 
@@ -123,6 +121,7 @@ by Harold Vilander
 # Dependency "Types"
 - `dependencies`
 - `devDependencies`
+ -  A -> B -> C
 - `peerDependencies`
 
 ???
@@ -132,8 +131,7 @@ by Harold Vilander
 - devDependencies
  - also installed from package.json unless you `--production` 
  - not installed for npm install package unless you flag --dev
- - not installed transitively A -> B -> C
-- peerDependencies
+ - not installed transitively- peerDependencies
   - express compatibility with a lib while not necessarily requiring it
   - this is also called a plug in
   - this changes in v7,
