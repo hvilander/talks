@@ -25,30 +25,54 @@ by Harold Vilander
 [5]: https://docs.npmjs.com/cli/v6/commands/npm-ci
 [6]: https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencies
 [7]: https://stackoverflow.com/questions/11207638/advantages-of-bundleddependencies-over-normal-dependencies-in-npm?lq=1
+[8]: https://docs.npmjs.com/downloading-and-installing-packages-globally
+[9]: https://github.com/npm/npx
+[10]: https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json
+
 
 ---
 
-- Install commands
+- Two Files
+
+- Install Commands
 
 - Dependency "Types" 
 
-- An Example Issue
+- Some Tools
 
-- package-lock
+- A Recent Issue 
+
 
 ???
-I: I will cover some basics with some details that I had lost to time
-  - local package testing: docker and non docker
-II: Some definitions and best practices
-III: An issue I ran across 
-IV: package-lock and how not to use it
+- the two files that define our dependencies
+- a review of the install commands
+- a review of dependency types
+- some tools for understanding what is happening / trouble shooting
+
+
+- A lot of this will be review, but things I had forgot
+- local package testing: how to put something like sqform into your team project  
+  - docker and non-docker setups
+-  An interesting issue I ran across, that had no errors but the resulting CSS was
+  wonky
+
+---
+# Two files
+- `package.json`
+- `package-lock.json`
+
+???
+- package.json defines your dependencies and lots of other things about your project
+- package-lock describes the exact versions installed
+  - "A manifestation of the manifest" [10]
+  - generated when npm modifies `node_modules` or package.json
+  - a way to get a reproducible build with the nature of continuous deployments
 
 ---
 
-# npm install
-- `npm install` with no arguments:
-  - `package.json`  -> node_modules/
-  - will not update package-lock.json
+- `npm install`
+  - `package.json` -> node_modules/
+  - will update package-lock.json conditionally
 
 - `npm install <pkg name>`
   - `--save-prod` or `-P`
@@ -56,23 +80,20 @@ IV: package-lock and how not to use it
   - will also update your package-lock.json
 
 ???
-1.  - with no arguments
-2.  - default to --save-prod, updates package.json FOR YOU AND lock file
-
+- with no arguments
+  - condition: if the package.json was newer version than the lock
+- install package name: 
+ - default to --save-prod, updates package.json FOR YOU AND lock file
 ---
-# More Options
 
 - `npm install <name>@<version>`
 - `npm install <name> --save-dev` or `npm install <name> -D`
     - puts an entry in devDependencies 
-    - update package-lock.json
 - `npm ci`
-
-
 ???
-1. installs specific version (or version range, `^`) see the docs for more info
-2. updates the devDependencies section of package.json, will also update the package lock
-3. CI is continuous integration mode. 
+- installs specific version (or version range, `^`) see the docs for more info
+- updates the devDependencies section of package.json, will also update the package lock
+- CI is continuous integration mode. 
  - meant for automated environments
  - "OR any situation where you want to make sure you have a clean install of deps"
  - if package.json and package-lock.json don't agree it will not update package-lock
@@ -81,44 +102,86 @@ IV: package-lock and how not to use it
 
 ---
 
+
+# AND MORE! 
+- global -> npx
+- github, tar file, folder path, etc
+
+???
+
+- global:  using packages on your computer, docs[8] say use npx instead if 5.2 or greater
+- can install from file, path, github, bitbucket, and lots of other options [4]
+  - git repo installs should be a method of last resort like just testing 
+  - in previous work we relied on this and it was very problematic.
+
+
+---
+
 # Dependency "Types"
 - `dependencies`
 - `devDependencies`
 - `peerDependencies`
+
+???
+- dependencies
+  - npm install from a dir that has a package.json
+  - npm install $package etc
+- devDependencies
+ - also installed from package.json unless you `--production` 
+ - not installed for npm install package unless you flag --dev
+ - not installed transitively
+- peerDependencies
+  - this changes in v7,
+  - we are on v6 ...after v7 peers should install automatically
+  - unless there is a conflict that cannot auto resolve
+
+---
+
+# More Types
+
 - `bundledDependencies`
 - `optionalDependencies`
 
 
 ???
-1. npm install from a dir that has a package.json
- - npm install <package> etc
-2.also installed from package.json unless you `--production` 
- - not installed for 'npm install <package>` unless you flag --dev
- - not installed transitively
-3. peerDependencies
-  - this changes in v7, we are on v6 - after v7 peers should install
-    automatically unless there is a conflict that cannot auto resolve
-4. bundled [7] - new to me, There is a link to a Stack OF...
+
+Last two we don't really use
+- bundled [7] - new to me, There is a link to a Stack OF...
   use when private npm package, you don't want to create your own npm repository
   but want some of the benefits of npm packages
-5. optional: npm should continue with the install, generally for packages that
+- optional: npm should continue with the install, generally for packages that
   don't work in every environment
+
+---
  
+# tools 
+
+- `npm list mymodule`
+- `grep version node-modules/my-module/package.json`
+- `npm pack`
+- `npm run build`
+- local package consumption - testing
+
+???
+
 ---
 
-
-
-
-
-
-Part 1: The issue
+# The Issue
 - Working on testing out the TS branch of SQForm
 - The issue
-
-Part 2: trouble shooting
-- some trouble shooting that might be useful
 - css out of order
 - css duplicated!!! 
+
+---
+
+Part 2: trouble shooting
+- demo:
+Show duplicate via list
+
+- some trouble shooting that might be useful
+
+
+---
 
 Part 3: solution hunting
 - local consumption
@@ -126,36 +189,6 @@ Part 3: solution hunting
 - peer dependencies?
 
 ---
-
-
-
-tools 
-
-- cli: you know I like this one
-- grep ftw
-`grep version node-modules/my-module/package.json`
-`npm list mymodule`
-`npm pack`
-`npm run build`
-
-
-
-dependency vs peer vs dev dependencies
-
-- dependencies: packages required by your application in production
-- dev: packages only needed for local development
-- peer: only used for packages that are released on npm. 
-  a) you expect your consumers to also ahve that package a dependency
-  b) you need a specific verions of that package
-  and
-  c) your npm package would break when the importing project has a dependency
-  for another version
-
-
-  npm ci
-
----
-
   semver:  Semantic Versioning 2.0.0
   1. MAJOR version when you make incompatible API changes,
   2. MINOR version when you add functionality in a backwards compatible manner, and
