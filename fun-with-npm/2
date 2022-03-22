@@ -21,18 +21,17 @@ by Harold Vilander
 [1]: https://blog.logrocket.com/why-you-should-use-package-lock-json
 [2]: https://docs.npmjs.com/cli/v7/configuring-npm/package-json#peerdependencies
 [3]: https://semver.org
-[4]: https://docs.npmjs.com/cli/v6/commands/npm-install
-[5]: https://docs.npmjs.com/cli/v6/commands/npm-ci
-[6]: https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencies
-[7]: https://stackoverflow.com/questions/11207638/advantages-of-bundleddependencies-over-normal-dependencies-in-npm?lq=1
+[4]: https://docs.npmjs.com/cli/v8/commands/npm-install
 
 ---
 
-- Install commands
+# Road Map
 
-- Dependency "Types" 
+- Some Review - install commands
 
-- An Example Issue
+- More Review - some differences in dependency classifications 
+
+- an interesting problem I ran into
 
 - package-lock
 
@@ -45,71 +44,27 @@ IV: package-lock and how not to use it
 
 ---
 
-# npm install
+Part 1: Some NPM install commmand review
+
 - `npm install` with no arguments:
-  - `package.json`  -> node_modules/
+  - Installs whatever you have in package.json into the node_modules directory.
   - will not update package-lock.json
-
-- `npm install <pkg name>`
-  - `--save-prod` or `-P`
-  - will update your package.json
-  - will also update your package-lock.json
-
-???
-1.  - with no arguments
-2.  - default to --save-prod, updates package.json FOR YOU AND lock file
-
----
-# More Options
-
+- `npm install <pkg name>`:
+  - by default this is like a `--save-prod` or `-P` so... 
+  - it will update your package.json
+  - it will also update your package-lock.json
 - `npm install <name>@<version>`
+  - installs your the named package with the version provided (there are several ways
+  to specify version, check the docs)
 - `npm install <name> --save-dev` or `npm install <name> -D`
-    - puts an entry in devDependencies 
+    - puts an entry in devdependencies 
     - update package-lock.json
-- `npm ci`
+- `npm ci` continuous integrations mode, installs what you have in package.json
 
 
-???
-1. installs specific version (or version range, `^`) see the docs for more info
-2. updates the devDependencies section of package.json, will also update the package lock
-3. CI is continuous integration mode. 
- - meant for automated environments
- - "OR any situation where you want to make sure you have a clean install of deps"
- - if package.json and package-lock.json don't agree it will not update package-lock
- - KEY DIFFERENCE ^^^ I expected to work when manually updating package.json
- - will remove node modules if they are present.
+
 
 ---
-
-# Dependency "Types"
-- `dependencies`
-- `devDependencies`
-- `peerDependencies`
-- `bundledDependencies`
-- `optionalDependencies`
-
-
-???
-1. npm install from a dir that has a package.json
- - npm install <package> etc
-2.also installed from package.json unless you `--production` 
- - not installed for 'npm install <package>` unless you flag --dev
- - not installed transitively
-3. peerDependencies
-  - this changes in v7, we are on v6 - after v7 peers should install
-    automatically unless there is a conflict that cannot auto resolve
-4. bundled [7] - new to me, There is a link to a Stack OF...
-  use when private npm package, you don't want to create your own npm repository
-  but want some of the benefits of npm packages
-5. optional: npm should continue with the install, generally for packages that
-  don't work in every environment
- 
----
-
-
-
-
-
 
 Part 1: The issue
 - Working on testing out the TS branch of SQForm
@@ -139,6 +94,7 @@ tools
 `npm run build`
 
 
+https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencies
 
 dependency vs peer vs dev dependencies
 
