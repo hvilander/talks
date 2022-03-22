@@ -28,6 +28,8 @@ by Harold Vilander
 [8]: https://docs.npmjs.com/downloading-and-installing-packages-globally
 [9]: https://github.com/npm/npx
 [10]: https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json
+<!-- sean's how to do local packages -->
+[11]: https://drive.google.com/file/d/1PrX7OfCyleR569pQv8s9jNH6tBe0JaM3/view 
 
 
 ---
@@ -113,6 +115,7 @@ by Harold Vilander
 - can install from file, path, github, bitbucket, and lots of other options [4]
   - git repo installs should be a method of last resort like just testing 
   - in previous work we relied on this and it was very problematic.
+  -  npm install alias@npm name - installs a package under a custom alias
 
 
 ---
@@ -129,8 +132,10 @@ by Harold Vilander
 - devDependencies
  - also installed from package.json unless you `--production` 
  - not installed for npm install package unless you flag --dev
- - not installed transitively
+ - not installed transitively A -> B -> C
 - peerDependencies
+  - express compatibility with a lib while not necessarily requiring it
+  - this is also called a plug in
   - this changes in v7,
   - we are on v6 ...after v7 peers should install automatically
   - unless there is a conflict that cannot auto resolve
@@ -154,90 +159,65 @@ Last two we don't really use
 
 ---
  
-# tools 
+# Tools 
 
-- `npm list mymodule`
-- `grep version node-modules/my-module/package.json`
-- `npm pack`
-- `npm run build`
-- local package consumption - testing
+- `npm list my-module`
+- local package consumption:
+  - `npm run build`
+  - `npm pack`
 
 ???
+- more on local package testing [11] sean's talk 
 
 ---
 
 # The Issue
-- Working on testing out the TS branch of SQForm
-- The issue
-- css out of order
-- css duplicated!!! 
+- background
+- confusingly, lets talk about CSS!
+
+???
+- SC3 admin, the artist formerly ... miav
+- needing to update sqform, might as well go for TS
+- SIDE NOTE TS IN SQFORM ROCKS!!!!
 
 ---
 
-Part 2: trouble shooting
-- demo:
-Show duplicate via list
+# DEMO: talk about the setup
+- build a tarball
+- edit package.json
+- rm -rf node_modules
+- npm install
 
-- some trouble shooting that might be useful
+show that package-lock.json is updated
 
+---
+
+# DEMO: show the broken things
+- side menu works and lay out is correct
+- click on a role
 
 ---
 
-Part 3: solution hunting
-- local consumption
-- I no longer trust NPM with its lock
-- peer dependencies?
+# DEMO: Go into the css and show some fun there
+- First I thought it was out of order
+- NOPE duplicated
 
 ---
-  semver:  Semantic Versioning 2.0.0
-  1. MAJOR version when you make incompatible API changes,
-  2. MINOR version when you add functionality in a backwards compatible manner, and
-  3. PATCH version when you make backwards compatible bug fixes.
-Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
+# Demo
+npm list
+
+??? 
+
+THIS IS THE ISSUE
 
 ---
-Holder
-??? intro text 
-I have been having some fun doing some version updates, trying to consume typescript branch of 
-sqforms inside of miav. 
 
-I had a fun error to figure out. 
+How to resolve this
+1. you may need to get the verions to match
+2. package-lock changes may not be the thing you need
+- nuke package-lock
 
-I have found local consumption of our libs very useful
-
-npm tools:
-- list
-- peer dependencies
-- doing update installs: nuke the lock 
-- maybe a better way: recomended useage
-
-
-`npm install` no arguments:
-- install the dependencies to the local node_moduels folder.
-- looks to the dependencies listed in package.json
-
-`-g` flag: global
-installs the current package context (ie the current working dir) as
-a global package
-
-`global package`  
-
-
-
-ooh interesting
-npm install <alias>@npm<name> - installs a package under a cumtom alias
-npm install [<@scope/]<name>@<version>
-
-global
-
-Default: false
-Type: Boolean
-Operates in "global" mode, so that packages are installed into the prefix folder instead of the current working directory. See folders for more on the differences in behavior.
-
-packages are installed into the {prefix}/lib/node_modules folder, instead of the current working directory.
-bin files are linked to {prefix}/bin
-man pages are linked to {prefix}/share/man
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
