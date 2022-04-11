@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SQF TS</title>
+    <title>CLI-Basics</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
@@ -27,8 +27,14 @@ class: center, middle
 # ISSUE 244 
 
 ???
-- Good morning
+- Goodmorning
 - TS SQF _consumption_
+
+---
+
+class: center, middle
+
+# I hope...
 
 ---
 
@@ -37,8 +43,24 @@ class: center, middle
 # ~~I hope...~~
 # MERGED !!!!!!
 
+---
+
+
+# Why:
+
+1. Type errors that will help prevent bugs
+2. Refactoring
+3. Code completion
+4. Discoverability: docs on props
+
+---
+
+class: center, middle
+
+# Demo - DX 
+
 ???
-I was gonna sell ya'll TS
+Demo benefits
 
 ---
 
@@ -81,27 +103,55 @@ headaches that i had with this
 
 # Consuming Breaking Changes
 - validation schema `yup.object`
-- on change typing 
-- formikBag vs formikHelpers
-- dropdown option types 
 - boolean valued dropdowns
-- context generic
-- match initial values and submit handler
-
+- dropdown option types 
+- 
 
 ???
+- schema.fields -> schema
 
 ---
 
-# DEMO - Manage Campaign Alerts
+
+
+- set up
+- common 'tasks'
+- common errors
+- some sc+ considerations
+- some process demos
+
+???
+setup:
+- type declaration
+- dependency versions - I think sean likely has this resolved
+- for me local consumption 
+
+common tasks: 
+ - boolean dropdowns
+ - provide SQFormContext a generic type
+ - yup.object (schema.fields) 
+
+common 'errors':
+ - initial values and onSave mismtach
+
+sc+
+- all of my css issues
+- table spacing: on the consumer 
 
 ---
 
-# Coming Soon 
-# Boolean Valued Dropdowns
 
+# Common type errors 
+- initial value and onSave handler mismatch
+- initial value and model mismatch
 ---
 
+# SC+ breaking changes
+- no more default padding on last child
+- headers on SQFormScrollableCard and SQFormScrollableCardsMenuWrapper
+... now have h5 headers and a fixed height of 50px
+
+---
 
 
     </textarea>
