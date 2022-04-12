@@ -42,11 +42,12 @@ I was gonna sell ya'll TS
 
 ---
 
-# Useful Stuff
+class: middle
+
+# For today
 - Assembly / Install Issues
 - Consuming Breaking Changes
-- Type errors on `npm run build`
-- CSS issues
+- Process Demo
 
 
 ???
@@ -65,8 +66,9 @@ viewer
 # Getting Started
 1. Update package.json to sqforms >= 8.0.0
 2. Likely update your scplus-shared-components
-3. If TS project you will need to remove the catch
+3. If TS project, remove the catch
 all type declaration
+
 `declare module '@selectquotelabs/sqform';`
 
 ???
@@ -79,29 +81,44 @@ headaches that i had with this
 
 ---
 
+
+class: middle,center
+
 # Consuming Breaking Changes
-- validation schema `yup.object`
-- on change typing 
-- formikBag vs formikHelpers
+
+---
+ 
+# #1
+- validation schema `yup.object` *
+- typing choices:  
+  - formikBag vs formikHelpers
+  - onChange handlers
+
+---
+
+# Dropdowns
 - dropdown option types 
 - boolean valued dropdowns
+
+---
+
+# Form Value Types
 - context generic
 - match initial values and submit handler
 
 
-???
 
 ---
 
+class: center, middle
 # DEMO - Manage Campaign Alerts
 
 ---
 
-# Coming Soon 
 # Boolean Valued Dropdowns
-
----
-
+# Campaign Groups
+???
+CampaignGroupCreateDialog.tsx
 
 
     </textarea>
