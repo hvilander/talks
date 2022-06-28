@@ -29,6 +29,7 @@ class: center, middle
 ???
 - Good morning
 - TS SQF _consumption_
+- my experiences 
 
 ---
 
@@ -47,27 +48,24 @@ class: middle
 # For today
 - Assembly / Install Issues
 - Consuming Breaking Changes
-- Process Demo
+- Demo's
 
 
 ???
-While I do want to share some experiences 
-I mainly want to give something useful to the 
-viewer
-
-- Assembly / Install Issues
-- CSS Issues
-- Consuming Breaking Changes
-- Type errors on `npm run build`
+- somethings I am going to gloss over, but
+if you run into them...
+- Type error: Duplicate identifier 'LibraryManagedAttributes'.
 
 ---
 
 
-# Getting Started
+# Setup 
 1. Update package.json to sqforms >= 8.0.0
 2. Likely update your scplus-shared-components
 3. If TS project, remove the catch
 all type declaration
+4. * version of react !!
+https://github.com/facebook/react/issues/24304#issuecomment-1094565891 
 
 `declare module '@selectquotelabs/sqform';`
 
@@ -106,17 +104,18 @@ class: middle,center
 - context generic
 - match initial values and submit handler
 
+---
 
+class: center, middle
+# Manage Campaign Alerts
 
 ---
 
 class: center, middle
-# DEMO - Manage Campaign Alerts
-
----
 
 # Boolean Valued Dropdowns
 # Campaign Groups
+
 ???
 CampaignGroupCreateDialog.tsx
 
