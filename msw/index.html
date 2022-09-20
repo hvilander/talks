@@ -10,29 +10,147 @@
 
 class: center, middle
 
-<!--
-  Link examples 
--->
 [1]: https://mswjs.io
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 [3]: https://serviceworkies.com
 
 <!-- some things on browers compat -->
 [4]: https://jakearchibald.github.io/isserviceworkerready/
+[5]: https://web.dev/progressive-web-apps/
+
+<!-- my pr putting this on GLS feature branch -->
+[6]: https://bitbucket.org/SelectQuote/sc2-senior/pull-requests/3384
+
+<!-- Lucas talk from nov 9th -->
+[7]: https://drive.google.com/file/d/1svV5oqJngOmCBvffrf94YaqaL9Dq3OLm/view?usp=sharing
 
 
-
-
-<!--
-![who cares][1]
--->
+<!-- Example reference link ![who cares][1] -->
 
 # Mock Service Worker 
 Harold Vilander
 
 ???
-Slide notes
+- Greet
+SC3 Core squad
+
+- RoadMap
+  - motivation: mocking APIs
+  - what is msw
+  - how it works
+  - what it can do for us
+
+  With some demos sprinkled in
+
 ---
+
+class: center, middle
+# Mocking APIs
+## previous FE chapter talk
+## JSON Web Server
+???
+mock generation
+
+---
+
+# what is it?
+- kinda like a proxy
+- can run either in the browser or in node
+- fully async
+  - not on main thread
+  - non blocking
+  - does not have access to the DOM
+- works via service worker
+---
+
+
+# what are service workers
+- a feature of PWA
+- intentions:
+  1. Better background sync
+  2. Better offline / slow network connection
+  3. Push notifications
+???
+---
+
+# Okay so what can it do? 
+???
+** DEMO 1 **
+Show the working demo
+- mock data
+- data based on request
+- loading due to delay
+- error views
+---
+
+# So that's neat, but does SQ need that?
+???
+
+- short term Benefit loom 
+- long term benefit TESTS!!
+- FE needs to work ahead.
+- unit an integration
+- mocking has been a bit shaky here for me.
+- trouble shoot exact API Return over and over
+- hooks
+- most like final impl
+- Pitfalls
+  - mocking too much
+  - FE can get too far ahead
+
+---
+
+
+# Setup
+1. Install:
+`npm install msw --save-dev`
+2. Define mocks
+3. Generate worker code:
+`npx msw init <path to public> --save`
+4. SetupWorker 
+5. Start worker
+
+???
+
+1. npm install msw --save-dev
+2. define mocks (handlers.js)
+3. npx msw init <path to public> --save
+4. configure browser.js
+5. start worker client/src/index.tsx
+
+
+---
+
+# New Endpoint
+- create hook 
+- update handler
+
+
+???
+```
+import { useQuery } from "react-query";
+import { fetchWrapper } from "services/restApi";
+import toastr from "toastr";
+
+export function useDemo() {
+  return useQuery(
+    ['useDemo'],
+    () => fetchWrapper( '/api/sqs/fe-chapter-demo'),
+    { onError: () => toastr.error('falied demo') }
+  )
+}
+```
+
+---
+class: center, middle
+# Questions
+
+
+
+
+
+
+
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
