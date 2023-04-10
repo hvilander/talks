@@ -1,0 +1,38 @@
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: black;
+}
+
+
+h1, h2, h3 {
+  font-family: 'helvetica';
+  font-weight: normal;
+}
+
+li {
+  font-size: 40px;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'menlo';
+}
+
+.remark-slide-content {
+  background-color: #373e47;
+  color: rgb(173, 186, 199);
+}
+
+.remark-slide-container {
+  /* background-color: black; */
+  background-color: #373e47;
+}
+
+.remark-slide-scaler {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+.remark-notes-area li {
+  font-size: 20px;
+}
