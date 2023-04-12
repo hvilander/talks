@@ -18,7 +18,8 @@ class: center, middle
 [3]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 [4]: assets/digraph.png
 [5]: https://en.wikipedia.org/wiki/Git
-
+[6]: https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git
+[7]: assets/mergeExample.png
 
 <div style={{paddingTop: "64px"}}>
 <img src="https://git-scm.com/images/logos/downloads/Git-Logo-White.png" alt="git logo" width="666px"/>
@@ -149,6 +150,67 @@ it has an identifier that is extermely close to unique
 - add: stages the changes
 - commit: puts the staged changes on the commit history
 - reset: throw away some changes
+
+---
+
+# Tools
+- "Servers": bitbucket, github
+- "clients": git cli, git lens, other vscode plugins
+- text editors: vscode, sublime, vim
+
+???
+WARN THEM DON'T USE VIM
+
+---
+
+
+# Demo 1 basics
+
+???
+mkdir demo
+git init
+git log
+git status
+git checkout -b X-1-readme-update
+vi readme.md
+// Add some text to readme
+
+git status
+// Talk about what the status means
+
+git add readme.md
+git status
+// Point out staged and how to unstage
+
+git commit 
+
+
+---
+
+
+# Demo 1 basics
+
+???
+// Talk about text editors
+save and close the file
+git status
+git log
+// Go through each piece of the log
+
+
+
+---
+
+
+# Merge demo
+![example][7]
+
+???
+Walk through  the image
+
+
+
+
 
 
 
