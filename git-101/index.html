@@ -66,7 +66,8 @@ Introduction
 - Having a model also aids in just knowing what you 
 want to do / what is possible
 - Habits: SQ is shoot from the hip, sometimes in the foot 
-- comfort / fun I love cli and git
+- comfort through understanding / fun I love cli and git
+- !! Not comprehensive
 
 ---
 # Road Map
@@ -163,6 +164,7 @@ it has an identifier that is extermely close to unique
 - log
 - diff
 - stash
+- branch
 
 ???
 
@@ -234,10 +236,12 @@ it has an identifier that is extermely close to unique
 - pull 
 
 ???
-clone a complete copy
-fetch - updates your local with remote's objects and refs
-push update remote refs along with assoc. objects
-pull fetch and integrate changes from another repo or local branch
+- origin - remote starting point
+--------
+- clone a complete copy
+- fetch - updates your local with remote's objects and refs
+- push update remote refs along with assoc. objects defaults to your 
+- pull fetch and integrate changes from another repo or local branch
 
 ---
 class: center, middle
@@ -255,20 +259,27 @@ class: center, middle
 - talk about the dangers of stale branches
 
 ---
+class: center, middle
 
-
-# rebasing
-- HISTORY ALTERING IS DANGEROUS
-- can be used to clean up some things
-  - before PR squashing (I mean fixup)
+# Rebase
+## CHANGING HISTORY IS DANGEROUS !
 
 ---
 
-# rebase demo
+# Rebase uses
+- change what your code "starts from"
+- before PR to "squash" (I mean fixup)
+- update commit messages
+
+---
+
+# Rebase demo
+![example][7]
+
+???
 - change what feature 4 is "based on"
 - "squash" changes from feature 4 before PR
 - "reword" commit messages
-![example][7]
 
 ---
 
@@ -308,14 +319,7 @@ class: center, middle
 
 class: center, middle
 
-# labs or anything else you wanna talk about 
-
-
----
-
-
-
-
+# labs and anything else you wanna talk about 
 
 
 
