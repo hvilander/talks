@@ -65,24 +65,40 @@ Introduction
   - get online help better
 - Having a model also aids in just knowing what you 
 want to do / what is possible
-- Habits: SQ is a mixed bag
+- Habits: SQ is shoot from the hip, sometimes in the foot 
 - comfort / fun I love cli and git
 
 ---
 # Road Map
-1. What is git?
-2. How does it work (Mental Model)
-3. Basic commands and what they really do 
-4. tools & demos
-5. Open Discussion / talk about labs
+1. tools
+2. What is git?
+3. How does it work (Mental Model)
+4. Basic commands 
+5. demos
+6. working with remote repos
+7. more demos
+8. Q&A / Open Discussion / talk about labs
 
 ---
-# My first introduction 
-# git-scm.com
 
+# Tools
+- "Servers": bitbucket, github
+- "clients": git cli, git lens, many more
+- text editors: vscode, sublime, vim, many more
+- Stop me if I shortcut!!
+
+???
+WARN THEM DON'T USE VIM
+
+My muscle memory and my setup... I have some shortcuts
+if I do something that doesn't make sense or is too
+fast stop me. I don't wanna lose you!!
+
+STOP: does this all make sense? 
 
 
 ---
+
 # What is git:
 - source / version control system
   - history
@@ -92,8 +108,8 @@ want to do / what is possible
 - it is NOT git hub!!
 - Directed Acyclic Graph
 
-
 ---
+
 # Directed Acyclic Graph
 
 ![directed graph][4]
@@ -143,6 +159,10 @@ it has an identifier that is extermely close to unique
 - add
 - commit
 - reset
+- status
+- log
+- diff
+- stash
 
 ???
 
@@ -153,36 +173,25 @@ it has an identifier that is extermely close to unique
 
 ---
 
-# Tools
-- "Servers": bitbucket, github
-- "clients": git cli, git lens, other vscode plugins
-- text editors: vscode, sublime, vim
-
-???
-WARN THEM DON'T USE VIM
-
----
-
-
 # Demo 1 basics
 
 ???
-mkdir demo
-git init
-git log
-git status
-git checkout -b X-1-readme-update
-vi readme.md
-// Add some text to readme
+- mkdir demo
+- git init
+- git log
+- git status
+- git checkout -b X-1-readme-update
+- vi readme.md
+  - Add some text to readme
 
-git status
-// Talk about what the status means
+- git status
+- Talk about what the status means
 
-git add readme.md
-git status
-// Point out staged and how to unstage
+- git add readme.md
+- git status
+  - Point out staged and how to unstage
 
-git commit 
+- git commit 
 
 
 ---
@@ -191,11 +200,11 @@ git commit
 # Demo 1 basics
 
 ???
-// Talk about text editors
-save and close the file
-git status
-git log
-// Go through each piece of the log
+- Talk about text editors
+- save and close the file
+- git status
+- git log
+  - Go through each piece of the log
 
 
 
@@ -206,26 +215,107 @@ git log
 ![example][7]
 
 ???
-Walk through  the image
-
-
-
-
-
-
-
+- Walk through  the image
+- merge abc into develop
+- talk / show the result in log, ? update image 
+- ask for prediction of merge xyz into develop
+- merge xyz
+- open log
+  - talk about what it did
+    - common ancestor & time
+  - !! COMMIT MESSAGE NAMING POINT !!
 
 
 ---
-Local vs. Remote
+# Local vs. Remote
 - clone
+- fetch
 - push 
 - pull 
-- fetch
 
+???
+clone a complete copy
+fetch - updates your local with remote's objects and refs
+push update remote refs along with assoc. objects
+pull fetch and integrate changes from another repo or local branch
+
+---
+class: center, middle
+
+# working _remotely_ demo
+
+???
+- open github https://github.com/hvilander/sq-git-example 
+- open merge demo - make note of the changes from the merge demo 
+- open local v remote demo & clone
+- show that the l-v-r doesn't know about the changes on merge demo
+  - i.e. it sill looks like our diagram in the slide
+- push the changes from merge demo
+- fetch the changes in l-v-r 
+- talk about the dangers of stale branches
+
+---
+
+
+# rebasing
+- HISTORY ALTERING IS DANGEROUS
+- can be used to clean up some things
+  - before PR squashing (I mean fixup)
+
+---
+
+# rebase demo
+- change what feature 4 is "based on"
+- "squash" changes from feature 4 before PR
+- "reword" commit messages
+![example][7]
+
+---
+
+# Opinions 
+- 1 commit on top of your target at the start of your PR
+- commit changes during PR WITH TICKET NUMBER 
+
+---
+
+# Conflicts
+- when files have different changes
+- merge or rebase
+- can get really messy
+
+???
+- first couple have someone help you out
+
+---
+class: center, middle
+
+# Conflict demo
+
+???
+- make a conflicted file 
+- try to merge a conflict
+- git status
+- show the conflicts in vs code
+- fix the conflict
+
+---
+
+class: center, middle
+
+# Q & A
+
+---
+
+class: center, middle
+
+# labs or anything else you wanna talk about 
 
 
 ---
+
+
+
+
 
 
 
