@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>git 101</title>
+    <title>git 102</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
@@ -58,9 +58,8 @@ Introduction
 - 2+ years at SQ
 - SE since 2018 (so still early career)
 - Ninja squad - miav & some CRM work for SRx & Senior  
-- cli guy 
+- I love command line tools, git is one of my favorites
 
-# STOP ME FOR QUESTIONS PLZ
 
 ## - - - - - - - -
 
@@ -70,34 +69,57 @@ Introduction
 
 
 ---
+
 class: center middle 
 
-# Round Two - Let's Level Set
-
+# Round Two Let's Level Set
 
 ???
-- The last group had never made a commit
-- I snooped at some of your github accounts
-  this group certainly has more experience
-- so lets fly over some of the basics
-
---- 
+- This is the second time I have done one of these talks
+- the last group had very limited / no exposure to git
+- I snooped on some of your public repos and I don't think
+  this group is in the same boat. 
+- That being said, open offer if you need any level of git help
+  I am happy to show you the ropes or try to help clean up a real
+  mess using the reflog
+  
+---
+# Road Map
 1. start with just a touch of theory
 2. fly past some basics
 3. talk about common SQ curveballs
 4. finish with some tips and some cli fun
 
 
+
+---
+class: center middle
+# Theory - in pictures!!
+
+
 ???
-I expect the theory to be review, but 
-it helped me a lot to think about how things work
+Let's draw! 
+
+- directed acyclic graph
+  - git organizes it history this way
+  - commits are nodes
+  - identifiers based on sha hashes
+  - nodes have descendants  
+  - no cycles
+  - refs: branch, tag, head
+
+- Distributed
+  - your local repository and remote are clones of
+    each other that can diverge
 
 
 ---
 # The Basics
 - checkout
+- add (staging)
 - commit
 - status
+- diff
 - log
 - push 
 - pull
@@ -106,67 +128,52 @@ it helped me a lot to think about how things work
 
 ???
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
+# demo log, status, reflog 
+## merge
 
 
 
 
 ---
-# Desired Outcomes
-# 1. Mental Model
-# 2. Good Practices
-# 3. SQ & common issues
-# 4. Discussion / Q & A
+# Common things 
+1. Branching strategies 
+2. I started work 'branched' off of develop but it needs to be off of release
+3. Prepping a PR 
+4. Business changed their mind and only want one commit from develop 
+5. I named my branch something silly and want to fix it
+6. I made an error in my last commit message and need to fix that
+
 
 ???
-# doing some GH stalking.... 
-- I expect that all of you are fairly comfortable 
-  on basic commits, We will try to give you something useful today
-- Having a model improves understanding and trouble shooting.
-- Habits: SQ is shoot from the hip, sometimes in the foot 
-- !! Not comprehensive 
+1. Branching strategies 
+- feature branches vs. develop -> release -> master /main
+2. I started work 'branched' off of develop but it needs to be off of release
+- rebase
+3. Prepping a PR - lots of messy looking commits
+- squash vs fixup
+4. Business changed their mind and only want one commit from develop 
+- cherry pick
+5. I named my branch something silly and want to fix it
+- branch rename with branch -m
+6. I made an error in my last commit message and need to fix that
+- git commit --amend -m "my great message"
+
 
 ---
-# Road Map
-1. tools
-2. What is git?
-3. How does it work (Mental Model)
-6. working with remote repos
-7. more demos
-8. Q&A / Open Discussion / talk about labs
 
+class: center middle
+# less basic + theory
+## merge
 
-??? 
-some suggestions
-James G: 
-  1. troubleshooting / common errors
-  2. how to fix them
+---
 
-  - how to rename a branch
-  - how to change the last commit
-  - change base
+class: center middle
 
- Branden:
-  - rebase
-  - merge
-  - revert
-  - cherry pick
-  - squashing commits
-  - tooling resolving conflicts without editor help and with it.
+# less basic + theory
+## rebase 
 
- Laurel
-  - senario based stuff, like things we have run into for release
 
 ---
 
@@ -174,7 +181,6 @@ James G:
 - "Servers": bitbucket, github
 - "clients": git cli, git lens, many more
 - text editors: vscode, sublime, vim, many more
-- Stop me if I shortcut!!
 
 ???
 WARN THEM DON'T USE VIM
@@ -185,219 +191,67 @@ fast stop me. I don't wanna lose you!!
 
 STOP: does this all make sense? 
 
-
 ---
 
-# What is git:
-- source / version control system
-  - history
-  - collaboration
-- overwhelming market share 
-- distributed
-- it is NOT git hub!!
-- Directed Acyclic Graph
-
----
-
-# Directed Acyclic Graph
-
-![directed graph][4]
-
+class: center, middle
+Demos: log - merge - abort
 ???
-- Graph
-  - nodes
-  - edges: directed
-- no cycles
-
----
-class: center middle
-
-# Let's draw some pictures
-
-
-???
-- time
-- init project
-- update read me
-- add feature 1
-- add feature 2
-- add feature 3
-- break up time
-- time only flows in one way! 
-- this is our directed graph!! 
-
-
----
-
-# vocabulary 
-- commit
-- branch
-- head
-
-???
-
-- a commit is a change that has been added to the history
-it has an identifier that is extermely close to unique
-- branch is a thing that points to a commit 
-- HEAD is where you are now
-
-
----
-# Basic commands
-- checkout
-- add
-- commit
-- reset
-- status
-- log
-- diff
-- stash
-- branch
-
-???
-
-- checkout moves the head to the specified destination usually a commit
-- add: stages the changes
-- commit: puts the staged changes on the commit history
-- reset: throw away some changes
-
----
-
-# Demo 1 basics
-
-???
-- mkdir demo
-- git init
+- This is sc2-srx
 - git log
+- git log --no-merges (shows it simple to highlight bad commit messages
+- start a bad merge
 - git status
-- git checkout -b X-1-readme-update
-- vi readme.md
-  - Add some text to readme
-
+- show some conflicts
+- git add 
 - git status
-- Talk about what the status means
-
-- git add readme.md
-- git status
-  - Point out staged and how to unstage
-
-- git commit 
-
+- resolve a conflict on cli and in vscode
+- abort a merge
 
 ---
 
-
-# Demo 1 basics
-
-???
-- Talk about text editors
-- save and close the file
-- git status
-- git log
-  - Go through each piece of the log
-
-
-
----
-
-
-# Merge demo
-![example][7]
-
-???
-- Walk through  the image
-- merge abc into develop
-- talk / show the result in log, ? update image 
-- ask for prediction of merge xyz into develop
-- merge xyz
-- open log
-  - talk about what it did
-    - common ancestor & time
-  - !! COMMIT MESSAGE NAMING POINT !!
-
-
----
-# Local vs. Remote
-- clone
-- fetch
-- push 
-- pull 
-
-???
-- origin - remote starting point
---------
-- clone a complete copy
-- fetch - updates your local with remote's objects and refs
-- push update remote refs along with assoc. objects defaults to your 
-- pull fetch and integrate changes from another repo or local branch
-
----
 class: center, middle
-
-# working _remotely_ demo
-
+Demos: rebase - commands -  abort
 ???
-- open github https://github.com/hvilander/sq-git-example 
-- open merge demo - make note of the changes from the merge demo 
-- open local v remote demo & clone
-- show that the l-v-r doesn't know about the changes on merge demo
-  - i.e. it sill looks like our diagram in the slide
-- push the changes from merge demo
-- fetch the changes in l-v-r 
-- talk about the dangers of stale branches
+- SETUP lets make some branches to make this simple
+- git checkout -b branchName
+- start a rebase with interactive
+- NOTE YOU CAN TOTALLY DO THE TEXT EDITING IN VSCODE - I have a config command for that
+- talk about the different commands
+- rename a commit
+- squash some commits
+- fixup some commits
+- g status TALK ABOUT THE MESSAGE
+
 
 ---
+
 class: center, middle
-
-# Rebase
-## CHANGING HISTORY IS DANGEROUS !
-
----
-
-# Rebase uses
-- change what your code "starts from"
-- before PR to "squash" (I mean fixup)
-- update commit messages
-
----
-
-# Rebase demo
-![example][7]
-
+Demos: rebase - commands -  abort
 ???
-- change what feature 4 is "based on"
-- "squash" changes from feature 4 before PR
-- "reword" commit messages
+- detached head
+
 
 ---
 
-# Opinions 
-- 1 commit on top of your target at the start of your PR
-- commit changes during PR WITH TICKET NUMBER 
-
----
-
-# Conflicts
-- when files have different changes
-- merge or rebase
-- can get really messy
-
-???
-- first couple have someone help you out
-
----
 class: center, middle
-
-# Conflict demo
-
+Demos: cherry pick 
 ???
-- make a conflicted file 
-- try to merge a conflict
-- git status
-- show the conflicts in vs code
-- fix the conflict
+- pull on or more specific commits into your branch
+ from another branch
+
+- will create a new commit with the changes with new commits
+
 
 ---
+
+class: center, middle
+# Demos: black magic 
+# reflog
+???
+
+
+---
+
 
 class: center, middle
 
