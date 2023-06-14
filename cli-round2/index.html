@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CLI-Round 2</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+<!--
+  Links and resources
+-->
+[1]: https://c.tenor.com/rUa8MTSuXFEAAAAM/who-cares.gif "Who cares"
+[2]: https://zsh.sourceforge.io/
+[3]: https://git-scm.com/images/logos/downloads/Git-Logo-White.png
+
+
+![who cares][1]
+
+# CLI - _why do I care_? 
+Harold Vilander
+
+???
+Revisiting this
+did it for FE chapter a while ago
+Having a chat with a more jr. 
+mentioned it would be nice to have some tips tricks and basics
+
+ADAM: what can you do in vim you cannot do in vscode
+some keyboard things I find myself using in vscode
+
+---
+class: center, middle
+# The case for CLI skills
+<div style={{paddingTop: "64px"}}>
+  <img src="assets/knife.png" alt="knife" height="200px"/>
+  <img src="assets/commerical.png" alt="onion" height="200px"/>
+</div>
+
+???
+one will chop all the onions, but sometimes maybe you don't want the dice
+maybe you need slices, and yes you could get a mandolin 
+
+the only way to have cli skills is to practice them
+
+PICK THE BEST TOOL FOR YOU. 
+
+---
+
+class: center, middle
+
+# 1. Not exhaustive
+# 2. probably full of errors 
+# 3. zsh / bash 
+# 4. target audience 
+
+???
+ALMOST certain better ways, this is a fast for me
+
+zsh default with macOS 
+bash should all be the same
+
+Audience - zsh / bash users, new devs, some cli tips and tricks seekers.
+Good luck windows fools, get a posix system
+
+trying to be enough different for those that saw the FE talk
+If you want I can get you a link to that recording.
+
+
+---
+
+# Downsides 
+- easy to over config
+- I am a broken purist and a curmudgeon
+
+
+???
+A lot of this, if you are thinking "I already do this faster"
+then ignore it. PICK THE BEST TOOL FOR YOU. 
+
+
+---
+class: center, middle
+
+# END OF DISCLAIMERS 
+
+---
+# If you only get one thing from this, this might be the most useful.
+```bash
+git config --global core.editor "code --wait"
+```
+
+---
+class: center, middle
+# Tab completion
+
+---
+
+
+
+# Using the Shell
+- what directory is this? 
+- moving around 
+- what is in this dir? 
+- what size are these things
+- getting help
+- being super
+- do it again
+- do it again but super
+
+???
+```bash
+BE IN ~/dec16_talk
+
+pwd
+ls
+cd react-express-example 
+cd ..
+
+cd ~/dev/talks/cli-basics 
+cd -
+
+ls
+man 
+moving around a bit
+
+sudo
+
+UP ARROW
+
+sudo !!
+
+```
+
+---
+
+# killing things, background, foreground 
+
+`ctrl c` : SIGINT / kill
+`ctrl z` : pause the fg -> fg and bg
+
+???
+start a ping
+ctrl c
+
+start a npm server
+ctrl z
+bg 
+jobs
+fg
+kill
+
+---
+
+# pipe and connecting commands
+
+- less is more
+- &&
+
+???
+&& example - rm -rf node_modules && npm ci && npm run dev
+
+---
+
+class: center, middle
+# node REPL
+
+???
+ Read Evaluate Print Loop
+
+ const a = [1,2,3]
+ a.filter(e => e > 1)
+
+
+
+---
+
+# some config
+`~/.zshrc` alias
+
+```
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+```
+
+???
+
+- I recommend keeping your config files in a repository and soft link them
+- my g as git is from .oh-my-zsh/plugins/git... maybe where I have gone too far
+
+---
+
+
+# VS Code
+- go to file fuzzy: `cmd p`
+- go to definition: `cmd b`
+- find references: `shift F12`
+- go to line:  `ctrl g`
+- go to next occurrence: `cmd d`
+
+???
+ActionsModal.tsx
+
+
+---
+
+class: center, middle
+
+# BONUS 
+
+---
+# CLI Everything
+- This presentation
+- Hello end of presentation 
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
