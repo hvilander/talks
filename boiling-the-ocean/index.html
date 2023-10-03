@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CLI-Round 2</title>
+    <title>Boiling the Ocean</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
@@ -13,210 +13,189 @@ class: center, middle
 <!--
   Links and resources
 -->
-[1]: https://c.tenor.com/rUa8MTSuXFEAAAAM/who-cares.gif "Who cares"
-[2]: https://zsh.sourceforge.io/
-[3]: https://git-scm.com/images/logos/downloads/Git-Logo-White.png
 
+[1]: assets/boil-ocean.jpeg
+[2]: https://en.wikipedia.org/wiki/Technical_debt
 
-![who cares][1]
-
-# CLI - _why do I care_? 
+![ocean][1]
+# Boiling The Ocean
 Harold Vilander
 
-???
-Revisiting this
-did it for FE chapter a while ago
-Having a chat with a more jr. 
-mentioned it would be nice to have some tips tricks and basics
+---
+# Goals:
+1. Convenience FE developers to start an iterative approach update to MUI 
+in their team's codebase.
 
-ADAM: what can you do in vim you cannot do in vscode
-some keyboard things I find myself using in vscode
+2. Give everyone some tools to use for large overhaul style initiatives.
+
+???
+# MUI4 -> 5
+- shared components (sqf and sc+) consumption
+- this update is a good example  (good and bad)
+- what is MUI and why is this an example?
+
+# everyone
+- this is a very expensive meeting and I want everyone to get something out of it.
+
 
 ---
-class: center, middle
-# The case for CLI skills
+# I am going to say this wrong
+# Tech Debt v. Maintenance
+
+---
+# Tech Debt
+- poor design
+- poor requirements
+- going "fast"
+- the debt analogy is why I get this wrong...
+under maintained systems also seem to have the
+interest issue
+
+---
+# Maintenance : keeping the lights on
+- package /dependency updates
+- external changes that require code changes
+
+
+---
+# Similar needs
+- refactoring
+- might take significant effort
+- need to 'sell' this to superiors
+
+
+---
+# Agenda
+1. Different approaches: iterative vs boil the ocean
+2. Case Study
+3. Some 'selling' ideas
+
+???
+Framework for the talk today
+thinking about strategies
+
+
+---
+# Boiling the ocean
+- do it all in one giant ball
+- keep it synced with current changes
+- wait until you can get this big ugly thing tested
+- drop it and deal with the after math
+
+???
+epic branch off of master or release
+
+
+
+---
+# Advantages:
+- sinking the ships / welcome to the new world 
+- ripping the band aid off
+
+???
+- assumes a level of success / no roll back
+
+
+---
+# Disadvantages:
+- large / YOLO sized PRs
+- might take a long time between changes and getting _real_ feedback
+- prone to having lots of bugs sneak in
+- done is probably not done
+- difficult to maintain the branch in during the life of the branch
+
+???
+merge conflicts on someone else's code
+testing is difficult for domain knowledge reasons, have to know every nook and cranny
+
+---
+# Iterative approach
+- setup to convert things in small chunks
+- do those small chunks over time merging as you go. 
+- clean up the _old_ at the end
+
+???
+- example typescript conversion, still allow JS while you convert files
+
+---
+# Advantages:
+- Fill gaps in developer time
+- build up changes over time
+- smaller PRs => better code review
+- faster _real_ feedback.
+
+
+---
+# Disadvantages:
+- unfinished efforts make a very ugly mess
+- maybe ugly setups
+
+
+???
+- unfinished: mui v0, flex form > simpler to pick back up tho
+- ugly setups => more in case study
+
+
+
+---
+# Case Study
+# MUI 4 -> 5
+
+???
+This has a long history
+
+
+---
+# Teamwork is great
+
+
+???
+- Laurel Branden Mudassar Farhan
+
+
+---
+# Time Ghost and why you shouldn't just take something at face value.
+
+???
+- zeitgeist
+- recent chapter talk / discussion on tech debt
+- Brought up that we could do an iterative approach
+
+---
+# History - Boil the Ocean
+
+???
+- Started on Senior OCT 2022
+- Moved to SRX
+- needed to consume a new shared component
+- moved back to senior
+- currently parked - 51 child tickets
+
+---
+# History - Iterative Approach
+- Started in september have working example NOT DONE!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+Example for some html fun
 <div style={{paddingTop: "64px"}}>
   <img src="assets/knife.png" alt="knife" height="200px"/>
   <img src="assets/commerical.png" alt="onion" height="200px"/>
 </div>
 
-???
-one will chop all the onions, but sometimes maybe you don't want the dice
-maybe you need slices, and yes you could get a mandolin 
 
-the only way to have cli skills is to practice them
-
-PICK THE BEST TOOL FOR YOU. 
-
----
-
-class: center, middle
-
-# 1. Not exhaustive
-# 2. probably full of errors 
-# 3. zsh / bash 
-# 4. target audience 
-
-???
-ALMOST certain better ways, this is a fast for me
-
-zsh default with macOS 
-bash should all be the same
-
-Audience - zsh / bash users, new devs, some cli tips and tricks seekers.
-Good luck windows fools, get a posix system
-
-trying to be enough different for those that saw the FE talk
-If you want I can get you a link to that recording.
-
-
----
-
-# Downsides 
-- easy to over config
-- I am a broken purist and a curmudgeon
-
-
-???
-A lot of this, if you are thinking "I already do this faster"
-then ignore it. PICK THE BEST TOOL FOR YOU. 
-
-
----
-class: center, middle
-
-# END OF DISCLAIMERS 
-
----
-# If you only get one thing from this, this might be the most useful.
-```bash
-git config --global core.editor "code --wait"
-```
-
----
-class: center, middle
-# Tab completion
-
----
-
-
-
-# Using the Shell
-- what directory is this? 
-- moving around 
-- what is in this dir? 
-- what size are these things
-- getting help
-- being super
-- do it again
-- do it again but super
-
-???
-```bash
-BE IN ~/dec16_talk
-
-pwd
-ls
-cd react-express-example 
-cd ..
-
-cd ~/dev/talks/cli-basics 
-cd -
-
-ls
-man 
-moving around a bit
-
-sudo
-
-UP ARROW
-
-sudo !!
-
-```
-
----
-
-# killing things, background, foreground 
-
-`ctrl c` : SIGINT / kill
-`ctrl z` : pause the fg -> fg and bg
-
-???
-start a ping
-ctrl c
-
-start a npm server
-ctrl z
-bg 
-jobs
-fg
-kill
-
----
-
-# pipe and connecting commands
-
-- less is more
-- &&
-
-???
-&& example - rm -rf node_modules && npm ci && npm run dev
-
----
-
-class: center, middle
-# node REPL
-
-???
- Read Evaluate Print Loop
-
- const a = [1,2,3]
- a.filter(e => e > 1)
-
-
-
----
-
-# some config
-`~/.zshrc` alias
-
-```
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-```
-
-???
-
-- I recommend keeping your config files in a repository and soft link them
-- my g as git is from .oh-my-zsh/plugins/git... maybe where I have gone too far
-
----
-
-
-# VS Code
-- go to file fuzzy: `cmd p`
-- go to definition: `cmd b`
-- find references: `shift F12`
-- go to line:  `ctrl g`
-- go to next occurrence: `cmd d`
-
-???
-ActionsModal.tsx
-
-
----
-
-class: center, middle
-
-# BONUS 
-
----
-# CLI Everything
-- This presentation
-- Hello end of presentation 
 
 
     </textarea>
