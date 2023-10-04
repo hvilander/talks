@@ -11,6 +11,11 @@ li {
  font-size: 40px;
 }
 
+a {
+  color: rgb(173, 186, 199);
+  font-size: 40px;
+}
+
 .remark-code, .remark-inline-code {
   font-family: 'menlo';
 }
@@ -27,3 +32,4 @@ li {
 .remark-slide-number {
   font-size: 12px
 }
+

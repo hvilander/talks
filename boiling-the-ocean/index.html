@@ -16,10 +16,20 @@ class: center, middle
 
 [1]: assets/boil-ocean.jpeg
 [2]: https://en.wikipedia.org/wiki/Technical_debt
+[3]: https://bitbucket.org/SelectQuote/sc2-senior/branch/epic/mui5
+[4]: https://bitbucket.org/SelectQuote/sc2-senior/commits/3ad82f3a658392dfd5b3b408bc53448714f27f75
+[5]: https://selectquote.atlassian.net/browse/SC3-1291
+FIND DOUBLE INSTALL GUIDE
+
 
 ![ocean][1]
 # Boiling The Ocean
 Harold Vilander
+
+???
+- hello
+- overhauling software
+
 
 ---
 # Goals:
@@ -91,9 +101,11 @@ epic branch off of master or release
 # Advantages:
 - sinking the ships / welcome to the new world 
 - ripping the band aid off
+- chance to clean up
 
 ???
 - assumes a level of success / no roll back
+- cleanup double edge as that is the way of massive scope creep
 
 
 ---
@@ -102,11 +114,12 @@ epic branch off of master or release
 - might take a long time between changes and getting _real_ feedback
 - prone to having lots of bugs sneak in
 - done is probably not done
-- difficult to maintain the branch in during the life of the branch
+- long lived big branches are subject to lot of issues
 
 ???
 merge conflicts on someone else's code
 testing is difficult for domain knowledge reasons, have to know every nook and cranny
+Long lived epics: change in priority, syncing with other changes, slow to deploy
 
 ---
 # Iterative approach
@@ -154,7 +167,7 @@ This has a long history
 
 
 ---
-# Time Ghost and why you shouldn't just take something at face value.
+# Don't just take something at face value.
 
 ???
 - zeitgeist
@@ -173,27 +186,86 @@ This has a long history
 
 ---
 # History - Iterative Approach
-- Started in september have working example NOT DONE!!
+- Started in September have working example NOT DONE!!
 
+---
+# Side by Side : Ocean
+##  [mui 5 on senior](https://bitbucket.org/SelectQuote/sc2-senior/commits/3ad82f3a658392dfd5b3b408bc53448714f27f75)
 
+- Packages!
+???
+- **update** packages and deps
+- **cleanup** caused more work here, removed --legacy-peer-deps
+- resulted in more deps getting updated
 
+---
+# commits
+## Branch: [epic/mui5](https://bitbucket.org/SelectQuote/sc2-senior/branch/epic/mui5)
 
-
-
-
-
-
-
-
+???
+- lots of broken things: scroll through lots of commits
+- in this case we have done much of the work to have things moved over
+- this work would still need done on iterative
 
 
 
 ---
-Example for some html fun
-<div style={{paddingTop: "64px"}}>
-  <img src="assets/knife.png" alt="knife" height="200px"/>
-  <img src="assets/commerical.png" alt="onion" height="200px"/>
-</div>
+# Side by side : Iterative 
+## [dual mui on senior](https://bitbucket.org/SelectQuote/sc2-senior/branch/dual-mui)
+
+???
+- **install** instead of update
+- dual styles stuff at the top level instead of replacing the theme provider
+- peer dependency fix: scripting - UGLY
+  - worked with Branded trying to get NPM to do this
+  - branden worked up the solution to copy in the node_modules after install
+  - packages look to their own node_modules first before looking up the chain
+  - This would need to be cleaned up after
+- css stuff -- link to css file !!
+
+
+
+---
+# Conversion
+- basically the same for both
+- change the imports Replace any CSS or makeStyles with the new sx prop(s) and remove any references to older versions of Material UI
+
+
+
+
+# Demo : MIAV
+[dual mui on miav](https://bitbucket.org/SelectQuote/multi-instance-admin-views/branch/mui5-setup)
+
+???
+- here is the app running in dev
+- here is the app running locally **same**
+- lets convert one component: roles table
+
+
+---
+# How to sell this
+1. tie it to a feature
+2. get a working proof of concept
+3. reach out to your chapter to help sell the idea
+
+???
+1. the business need will be met and you get your tiny tech changes
+- this is basically impossible with ocean 
+- for MUI specifically use a consumption of a sqform or sc+ component 
+2. this has lots of advantages.
+- its not just you saying it will / should work
+- you can demo benefits in a small example
+- you may find benefits you didn't image
+3. teamwork makes the dream work, this is not just tech help 
+but can be idea help too
+
+
+---
+# Goals:
+1. Convenience FE developers to start an iterative approach update to MUI 
+in their team's codebase.
+
+2. Give everyone some tools to use for large overhaul style initiatives.
 
 
 
